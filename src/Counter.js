@@ -6,23 +6,32 @@ class Counter extends React.Component {
         value: 0
     }
 
-    componentDidMount() {
-        setTimeout( () => this.setState({
-            value : 1
+handleIncrementClick = () => this.setState({
+    value: this.state.value + 1
+})
 
-        }), 1000)
+handleDecrementClick = () => this.setState({
+        value: this.state.value -1
+})
 
+    handleResetClick = () => this.setState({
+        value : this.props.initialValue
+    })
+
+    static getDerivedStateFromPorops (nextProps, prevState) {
+        return {vaule: nextProps.initialValue}
     }
 
     render () {
 
-console.log('malujemy counter')
 
         return (
 <div>
     <h1>{this.state.value}</h1>
     <p>
-        <button onClick={() => this.setState({value : this.state.value + 1})}>Increment</button>
+        <button onClick={this.handleIncrementClick}>Increment</button>
+        <button onClick={this.handleDecrementClick}>Decrement</button>
+        <button onClick={this.handleResetClick}>Reset</button>
     </p>
 </div>
         )
