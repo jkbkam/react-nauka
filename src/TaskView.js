@@ -23,13 +23,21 @@ class TaskView extends Component {
     handleSubmit = event => {
         event.preventDefault()
         console.log(this.state.taskName, this.state.taskDescription)
-    }
 
-    handleChange = event => {
+
         this.setState({
-            [event.target.name]: event.target.value
+            tasks: this.state.tasks.concat({
+                id: this.state.tasks.length + 1,
+                name: this.state.taskName,
+                description: this.state.taskDescription
+            })
         })
     }
+        handleChange = event => {
+            this.setState({
+                [event.target.name]: event.target.value
+            })
+        }
 
 
     render() {
@@ -42,13 +50,18 @@ class TaskView extends Component {
                         onChange={this.handleChange}/>
                     <input
                         value={this.state.taskDescription}
-                        onChange={this.handleTaskDescriptionChange}/>
+                        onChange={this.handleChange}/>
                     <button>Add</button>
                 </form>
 
                 <ul>
-                    <li>1 Task</li>
-                    <li>2 Task</li>
+                    {
+                        this.state.tasks.map(
+                            task => (
+                                <li key={task.id}>
+                                    {task.name} : {task.description}
+                                </li>))
+                    }
                 </ul>
             </div>
     )
