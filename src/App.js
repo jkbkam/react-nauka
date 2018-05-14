@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import TaskView from "./TaskView";
+import TasksView from "./TasksView";
 import CounterView from "./CounterView";
-import {BrowserRouter, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
+import NavBar from "./NavBar";
+import MagicNumber from "./MagicNumber";
 
 
 class App extends React.Component {
@@ -16,19 +18,15 @@ class App extends React.Component {
       <div>
           <h1> Hello everyone!</h1>
 
-          <nav>
-              <p><Link to ="/">Home</Link></p>
-              <p><Link to ="/counters">Counters</Link></p>
-              <p><Link to ="/about">About</Link></p>
-              <p><Link to ="/tasks">Tasks</Link></p>
-          </nav>
 
+<NavBar/>
 
 
 
           <Route path="/counters" component={CounterView}/>
           <Route path="/about" render={() => <p>Foo</p>}/>
-          <Route path="/tasks" component={TaskView}/>
+          <Route path="/tasks" component={TasksView}/>
+          <Route path="/magicnumbers" component={MagicNumber}/>
 
       </div>
      </BrowserRouter>
