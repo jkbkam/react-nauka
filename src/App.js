@@ -6,6 +6,12 @@ import Counter from "./Counter";
 
 
 class App extends React.Component {
+
+    state = {
+        initialValue: 2
+    }
+
+
   render() {
     return (
       <div>
@@ -13,7 +19,8 @@ class App extends React.Component {
 
             <TaskView/>
 
-          <Counter/>
+          <Counter initialValue={this.state.initialValue}/>
+
 
       </div>
 
