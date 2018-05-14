@@ -1,17 +1,17 @@
 import React, {Component, Fragment} from 'react'
 
 
-class Counter extends Component {
+class CounterView extends Component {
     state = {
         value: 0,
-        title: "Super Counter"
+        title: "Super CounterView"
 }
 handleClick = () => this.setState({
     value: Math.min(this.state.value + 1, 50)
 })
 
     handleReset = () => this.setState ({
-        value: this.props.initialValue
+        value: 0
     })
 
     handleDecrement = () => this.setState ({
@@ -29,12 +29,12 @@ handleClick = () => this.setState({
                 <h2>{this.state.title}</h2>
                 <p>
                     <button onClick={this.handleClick}>Increment</button>
-                    <button onClick={this.handleClick}>Reset</button>
-                    <button onClick={this.handleClick}>Decrement</button>
+                    <button onClick={this.handleReset}>Reset</button>
+                    <button onClick={this.handleDecrement}>Decrement</button>
                 </p>
             </Fragment>
         )
     }
 }
 
-export default Counter
+export default CounterView

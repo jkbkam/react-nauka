@@ -1,29 +1,37 @@
 import React from 'react';
 import './App.css';
 import TaskView from "./TaskView";
-import Counter from "./Counter";
-
+import CounterView from "./CounterView";
+import {BrowserRouter, Route, Link} from 'react-router-dom'
 
 
 class App extends React.Component {
 
-    state = {
-        initialValue: 2
-    }
+
 
 
   render() {
     return (
+     <BrowserRouter>
       <div>
-         Hello everyone!
+          <h1> Hello everyone!</h1>
 
-            <TaskView/>
+          <nav>
+              <p><Link to ="/">Home</Link></p>
+              <p><Link to ="/counters">Counters</Link></p>
+              <p><Link to ="/about">About</Link></p>
+              <p><Link to ="/tasks">Tasks</Link></p>
+          </nav>
 
-          <Counter initialValue={this.state.initialValue}/>
 
+
+
+          <Route path="/counters" component={CounterView}/>
+          <Route path="/about" render={() => <p>Foo</p>}/>
+          <Route path="/tasks" component={TaskView}/>
 
       </div>
-
+     </BrowserRouter>
     );
   }
 }
