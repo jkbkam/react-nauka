@@ -30,7 +30,8 @@ class TaskForm extends Component {
     }
     handleChange = event => {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            formError: null
         })
     }
 
@@ -38,6 +39,8 @@ class TaskForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                {this.state.formError && <p>{this.state.formError.message}</p>}
+
                 <input
                     name='taskName'
                     value={this.state.taskName}

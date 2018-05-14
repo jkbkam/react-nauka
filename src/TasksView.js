@@ -44,6 +44,22 @@ class TasksView extends Component {
         )
     }
 
+    componentDidMount() {
+        const tasksAsTextInJSONFormat = localStorage.getItem('storedTasks')
+        const tasksFromLocalStorage = JSON.parse(tasksAsTextInJSONFormat)
+
+        this.setState({
+            tasks: tasksFromLocalStorage || []
+        })
+    }
+
+    componentDidUpdate() {
+        const tasks = this.state.tasks
+
+        localStorage.setItem('storedTasks', JSON.stringify(tasks))
+    }
+
+
 }
 
 export default TasksView
